@@ -1,0 +1,28 @@
+.input-wrapper {
+    width: 100%;
+    height: 100px;
+    position: relative;
+
+    border: 2px solid #9e9e9e;
+
+    margin-top: 10px;
+
+    
+}
+
+.input-wrapper .inputOverlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    cursor: pointer;
+}
+
+.input-wrapper #upload{
+    position: absolute;
+    
+    width: 100%;
+    height: 100px;
+    opacity: 0;
+}

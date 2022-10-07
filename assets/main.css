@@ -1,0 +1,19 @@
+@import url(./normalize.css);
+@import url(./run-wrapper.css);
+@import url(./header.css);
+@import url(./input-wrapper.css);
+
+html {
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+
+    position: relative;
+
+    background-color: #212121;
+    color: white;
+}

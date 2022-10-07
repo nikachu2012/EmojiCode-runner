@@ -1,0 +1,49 @@
+header {
+    width: 100vw;
+    height: 45px;
+
+    background-color: #424242;
+    border-bottom: #00ff00 1px solid;
+
+    position: relative;
+
+    display: flex;
+}
+
+header .title {
+    margin-left: 3px;
+
+    display: flex;
+    align-items: center;
+    font-size: large;
+
+    user-select: none;
+    margin-right: 10px;
+}
+
+.title-picture {
+    width: 35px;
+    user-select: none;
+
+    margin-left: 8px;
+    
+}
+
+.buttonList {
+    height: 45px;
+
+    display: flex;
+}
+
+.buttonList .button {
+    padding: 0px 10px 0px 10px;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.buttonList .button:hover {
+    background-color: #616161;
+}

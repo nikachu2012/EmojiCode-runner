@@ -1,0 +1,9 @@
+[submodule "EmojiCode-audio"]
+	path = EmojiCode-audio
+	url = https://github.com/nikachu2012/EmojiCode-audio.git
+[submodule "EmojiCode-sprite"]
+	path = EmojiCode-sprite
+	url = https://github.com/nikachu2012/EmojiCode-sprite.git
+[submodule "EmojiCode"]
+	path = EmojiCode
+	url = https://github.com/nikachu2012/EmojiCode.git

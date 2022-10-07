@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmojiCode Runner</title>
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+
+    <link rel="shortcut icon" href="https://emojicode-ide.nikachu.net/assets/logo.svg" type="image/svg">
+    <link rel="stylesheet" href="./assets/main.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="https://emojicode-ide.nikachu.net/assets/logo.svg" class="title-picture" alt="しろくまじっこ">
+        <div class="title">
+            EmojiCode
+        </div>
+
+        <div class="buttonList">
+            <div class="button">作る</div>
+            <div class="button">見る</div>
+            <div class="button">ドキュメント</div>
+        </div>
+    </header>
+    <div class="run-wrapper">
+        <!-- <h1>タイトル</h1> -->
+        <div class="input-wrapper">
+            <div class="inputOverlay">
+                ファイルがまだロードされていません。
+            </div>
+            <input type="file" name="upload" id="upload" accept=".eci .json .txt">
+
+        </div>
+
+        <div class="controlBar">
+            <div class="left">
+                <button class="material-symbols-outlined flag">flag</button>
+            </div>
+            <div class="right">
+
+            </div>
+        </div>
+        <div class="run-canvas" id="run-canvas"></div>
+        <hr class="hr">
+        <div class="console"></div>
+    </div>
+
+    <div id="code"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.40/Tone.js"></script>
+    <script src="./EmojiCode-sprite/emojisprite.js"></script>
+    <script src="./EmojiCode-audio/emojiaudio.js"></script>
+
+    <script src="./EmojiCode/defaultFunctions/index.js"></script>
+
+    <script src="./assets/init.js"></script>
+    <script src="./assets/load.js"></script>
+    <script>
+        const ele = document.getElementById('run-canvas')
+        while (ele.firstChild) {
+            ele.removeChild(ele.firstChild);
+        }
+
+        document.querySelector('.flag').addEventListener('click', () => {
+            if (isBlockly == true) {
+                runCode(decodeURI(buildBlockly))
+            }
+            else {
+                runCode(decodeURI(editorText))
+            }
+        })
+
+        document.querySelector('#upload').addEventListener('change', () => {
+            try {
+                const files = document.querySelector('#upload').files[0]
+
+                const reader = new FileReader();
+
+                reader.onload = (event) => {
+                    const text = event.target.result;
+                    console.log(text);
+
+                    loadFile(text)
+                }
+
+                if (files) {
+                    reader.readAsText(files)
+                    document.querySelector('.input-wrapper').remove();
+                }
+                else {
+                    alert('ファイルをアップロードしてください。')
+                }
+            } catch (error) {
+                console.error(error)
+                const answer = window.confirm("ロード時にエラーが発生しました。詳細はDevToolsをご覧ください。\n再読み込みします。")
+
+                if (answer) {
+                    location.reload();
+                }
+                else { }
+            }
+        })
+
+        const runCode = (data) => {
+            eval(data)
+        }
+
+        const log = (text) => {
+            const consoleWindow = document.querySelector('.console')
+
+            const contents = document.createElement('div')
+            contents.className = 'logContents';
+            contents.innerHTML = text;
+
+            consoleWindow.appendChild(contents)
+
+            consoleWindow.scrollTop = consoleWindow.scrollHeight;
+        }
+
+    </script>
+</body>
+
+</html>
